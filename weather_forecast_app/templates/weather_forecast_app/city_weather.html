@@ -1,0 +1,23 @@
+{% if weather_data %}
+    <h1>{{ weather_data.city }}</h1>
+    <h2>{{ weather_data.temperature }}</h2>
+    <h3>Humidity: {{ weather_data.humidity }}</h3>
+    <p>{{ weather_data.description }}</p>
+    <img src="http://{{ weather_data.icon }}" alt="{{ weather_data.description }}">
+{% endif %}
+
+{% if daily_forecasts %}
+    <h2>7 days Forecasts</h2>
+    <div class="forecast-container">
+        {% for forecast in daily_forecasts %}
+            <div class="forecast">
+                <h3>{{ forecast.day }}</h3>
+                <p>{{ forecast.min_temp }}°C - {{ forecast.max_temp }}°C</p>
+                <p>Humidity: {{ forecast.humidity }}</p>
+                <p>{{ forecast.description }}</p>
+                <img src="http://{{ forecast.icon }}" alt="{{ forecast.description }}">
+            </div>
+        {% endfor %}
+
+    </div>
+{% endif %} 
